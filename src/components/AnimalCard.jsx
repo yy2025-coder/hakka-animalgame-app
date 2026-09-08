@@ -17,7 +17,6 @@ export default function AnimalCard({ animal, onClick, playing, showCard = false,
         draggable={false}
       />
       <div className={`mt-2 font-extrabold text-2xl ${text}`}>{animal.hanzi}</div>
-      <div className="text-sm text-stone-500">{animal.pinyin}</div>
       {playing && <div className="absolute top-2 right-2 text-3xl">🔊</div>}
     </button>
   )
