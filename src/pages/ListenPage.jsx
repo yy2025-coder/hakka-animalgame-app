@@ -6,14 +6,14 @@ import { useTTS } from '../hooks/useTTS'
 import { useAccent } from '../hooks/AccentContext'
 
 export default function ListenPage({ onBack }) {
-  const { speak, isPlaying, error } = useTTS()
+  const { speakAnimal, isPlaying, error } = useTTS()
   const { voice } = useAccent()
   const [activeId, setActiveId] = useState(null)
   const [flippedId, setFlippedId] = useState(null)
 
   const handleTap = async (animal) => {
     setActiveId(animal.id)
-    await speak(animal.hanzi, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
+    await speakAnimal(animal, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
     setFlippedId(animal.id)
     setTimeout(() => setFlippedId((cur) => (cur === animal.id ? null : cur)), 2200)
   }

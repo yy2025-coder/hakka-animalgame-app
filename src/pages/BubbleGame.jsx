@@ -28,7 +28,7 @@ function roundStars(correctCount) {
 let bubbleUid = 0
 
 export default function BubbleGame({ onBack }) {
-  const { speak, error: ttsError } = useTTS()
+  const { speakAnimal, error: ttsError } = useTTS()
   const { voice } = useAccent()
 
   const [phase, setPhase] = useState('intro') // intro | playing | roundEnd | finished
@@ -56,9 +56,9 @@ export default function BubbleGame({ onBack }) {
 
   const announceTarget = useCallback(
     (animal) => {
-      speak(animal.hanzi, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
+      speakAnimal(animal, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
     },
-    [speak, voice]
+    [speakAnimal, voice]
   )
 
   const spawnBubble = useCallback(() => {

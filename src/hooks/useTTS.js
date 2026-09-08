@@ -109,5 +109,46 @@ export function useTTS() {
     [stop]
   )
 
-  return { speak, stop, isPlaying, error }
+  // playFile：直接播放一個靜態音檔（例如老師實際錄好的正確客語發音），
+  // 不經過 TTS 合成，用來取代某些字 TTS 念不準的情況。
+  const playFile = useCallback(
+    async (url) => {
+      if (!url) return
+      stop()
+      setError(null)
+      try {
+        setIsPlaying(true)
+        const audio = new Audio(url)
+        audioRef.current = audio
+        audio.onended = () => {
+          setIsPlaying(false)
+          audioRef.current = null
+        }
+        audio.onerror = () => {
+          setIsPlaying(false)
+          audioRef.current = null
+          setError('錄音檔播放失敗：' + url)
+        }
+        await audio.play()
+      } catch (err) {
+        setIsPlaying(false)
+        setError(err.message || String(err))
+      }
+    },
+    [stop]
+  )
+
+  // speakAnimal：播放一隻動物的發音。如果這筆資料有 audio 欄位
+  // （代表 TTS 念這個字不準確，老師錄了正確發音取代），優先播放錄音檔，
+  // 否則照原本方式呼叫 TTS 合成 animal.hanzi。
+  const speakAnimal = useCallback(
+    (animal, options = {}) => {
+      if (!animal) return
+      if (animal.audio) return playFile(animal.audio)
+      return speak(animal.hanzi, options)
+    },
+    [playFile, speak]
+  )
+
+  return { speak, playFile, speakAnimal, stop, isPlaying, error }
 }

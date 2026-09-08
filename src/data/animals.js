@@ -2,23 +2,23 @@
 // 每筆包含：客語漢字（送 TTS/顯示用）、教學拼音（顯示用，非 TTS 參數）、
 // 對應華語（給文本工具做語音辨識比對或備援翻譯用）、emoji（備用小圖示）、
 // 插圖與字卡圖檔路徑、卡片配色 key（對應 utils/colors.js 查表，避免坑25）
+// audio：如果有這個欄位，代表這個字的 TTS 發音不準確，改用老師實際錄好的
+// 正確客語發音檔（public/audio/ 底下），播放時優先使用這個檔案而不是呼叫 TTS。
 export const ANIMALS = [
   { id: 'cat', hanzi: '貓仔', pinyin: 'meu e', zh: '貓', emoji: '🐱', pic: '/images/pic-0.jpg', card: '/images/card-1.jpg', color: 'rose' },
   { id: 'dog', hanzi: '狗仔', pinyin: 'geu e', zh: '狗', emoji: '🐶', pic: '/images/pic-2.jpg', card: '/images/card-3.jpg', color: 'amber' },
   { id: 'pig', hanzi: '豬仔', pinyin: 'zu e', zh: '豬', emoji: '🐷', pic: '/images/pic-4.jpg', card: '/images/card-5.jpg', color: 'pink' },
-  { id: 'chicken', hanzi: '雞仔', pinyin: 'gie e', zh: '雞', emoji: '🐔', pic: '/images/pic-6.jpg', card: '/images/card-7.jpg', color: 'orange' },
+  { id: 'chicken', hanzi: '雞仔', pinyin: 'gie e', zh: '雞', emoji: '🐔', pic: '/images/pic-6.jpg', card: '/images/card-7.jpg', color: 'orange', audio: '/audio/chicken.m4a' },
   { id: 'cow', hanzi: '牛仔', pinyin: 'ngiu e', zh: '牛', emoji: '🐮', pic: '/images/pic-8.jpg', card: '/images/card-9.jpg', color: 'yellow' },
   { id: 'horse', hanzi: '馬仔', pinyin: 'ma e', zh: '馬', emoji: '🐴', pic: '/images/pic-10.jpg', card: '/images/card-11.jpg', color: 'stone' },
   { id: 'rabbit', hanzi: '兔仔', pinyin: 'tu e', zh: '兔子', emoji: '🐰', pic: '/images/pic-12.jpg', card: '/images/card-13.jpg', color: 'lime' },
   { id: 'monkey', hanzi: '猴仔', pinyin: 'heu e', zh: '猴子', emoji: '🐵', pic: '/images/pic-14.jpg', card: '/images/card-15.jpg', color: 'amber' },
   { id: 'sheep', hanzi: '羊仔', pinyin: 'iong e', zh: '羊', emoji: '🐑', pic: '/images/pic-16.jpg', card: '/images/card-17.jpg', color: 'teal' },
-  { id: 'butterfly', hanzi: '揚尾仔', pinyin: 'iong mi e', zh: '蝴蝶', emoji: '🦋', pic: '/images/pic-18.jpg', card: '/images/card-19.jpg', color: 'orange' },
-  { id: 'cricket', hanzi: '土狗仔', pinyin: 'tu geu e', zh: '蟋蟀', emoji: '🦗', pic: '/images/pic-20.jpg', card: '/images/card-21.jpg', color: 'green' },
+  { id: 'butterfly', hanzi: '揚尾仔', pinyin: 'iong mi e', zh: '蝴蝶', emoji: '🦋', pic: '/images/pic-18.jpg', card: '/images/card-19.jpg', color: 'orange', audio: '/audio/butterfly.m4a' },
   { id: 'firefly', hanzi: '火焰蟲', pinyin: 'fo ngiam cung', zh: '螢火蟲', emoji: '✨', pic: '/images/pic-22.jpg', card: '/images/card-23.jpg', color: 'yellow' },
-  { id: 'dragonfly', hanzi: '揚葉仔', pinyin: 'iong iab e', zh: '蜻蜓', emoji: '🌾', pic: '/images/pic-24.jpg', card: '/images/card-25.jpg', color: 'sky' },
+  { id: 'dragonfly', hanzi: '揚葉仔', pinyin: 'iong iab e', zh: '蜻蜓', emoji: '🌾', pic: '/images/pic-24.jpg', card: '/images/card-25.jpg', color: 'sky', audio: '/audio/dragonfly.m4a' },
   { id: 'tiger', hanzi: '老虎', pinyin: 'no fu', zh: '老虎', emoji: '🐯', pic: '/images/pic-26.jpg', card: '/images/card-27.jpg', color: 'orange' },
   { id: 'lion', hanzi: '獅仔', pinyin: 'sii e', zh: '獅子', emoji: '🦁', pic: '/images/pic-28.jpg', card: '/images/card-29.jpg', color: 'amber' },
-  { id: 'bear', hanzi: '熊仔', pinyin: 'iung e', zh: '熊', emoji: '🐻', pic: '/images/pic-30.jpg', card: '/images/card-31.jpg', color: 'stone' },
   { id: 'bird', hanzi: '鳥仔', pinyin: 'diau e', zh: '鳥', emoji: '🐦', pic: '/images/pic-32.jpg', card: '/images/card-33.jpg', color: 'sky' },
 ]
 

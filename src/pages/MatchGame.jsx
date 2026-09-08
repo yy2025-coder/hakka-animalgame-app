@@ -18,7 +18,7 @@ function newRound() {
 }
 
 export default function MatchGame({ onBack }) {
-  const { speak, error: ttsError } = useTTS()
+  const { speakAnimal, error: ttsError } = useTTS()
   const { voice } = useAccent()
   const [round, setRound] = useState(newRound)
   const [matched, setMatched] = useState(new Set())
@@ -48,7 +48,7 @@ export default function MatchGame({ onBack }) {
     // 這裡是完成一組配對嘗試，直接在點擊事件（使用者手勢）當下判斷並播放語音
     const isMatch = selected.id === animal.id
     if (isMatch) {
-      speak(animal.hanzi, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
+      speakAnimal(animal, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
       setMatched((prev) => new Set(prev).add(animal.id))
       setSelected(null)
     } else {

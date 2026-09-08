@@ -27,7 +27,7 @@ function roundStars(mistakes) {
 }
 
 export default function CatchGame({ onBack }) {
-  const { speak, error: ttsError } = useTTS()
+  const { speakAnimal, error: ttsError } = useTTS()
   const { voice } = useAccent()
 
   // queueRef：洗牌過的完整動物清單，整場遊戲固定不變，roundIdx 依序往下取，
@@ -45,7 +45,7 @@ export default function CatchGame({ onBack }) {
 
   const askTargetRef = useRef(null)
   askTargetRef.current = () => {
-    speak(target.hanzi, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
+    speakAnimal(target, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
   }
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function CatchGame({ onBack }) {
       setCaughtId(animal.id)
       const stars = roundStars(mistakesThisRound)
       setTotalStars((s) => s + stars)
-      speak(animal.hanzi, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
+      speakAnimal(animal, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
       setTimeout(() => {
         if (roundIdx + 1 >= TOTAL_ROUNDS) {
           setFinished(true)
