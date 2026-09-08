@@ -1,6 +1,6 @@
 import { CARD_BG, CARD_BORDER, CARD_TEXT } from '../utils/colors'
 
-export default function AnimalCard({ animal, onClick, playing, showCard = false, className = '' }) {
+export default function AnimalCard({ animal, onClick, playing, className = '' }) {
   const bg = CARD_BG[animal.color] || 'bg-orange-200'
   const border = CARD_BORDER[animal.color] || 'border-orange-400'
   const text = CARD_TEXT[animal.color] || 'text-orange-700'
@@ -11,7 +11,7 @@ export default function AnimalCard({ animal, onClick, playing, showCard = false,
         active:scale-95 transition-transform duration-150 ${playing ? 'animate-pop ring-4 ring-white' : ''} ${className}`}
     >
       <img
-        src={showCard ? animal.card : animal.pic}
+        src={animal.pic}
         alt={animal.hanzi}
         className="w-full aspect-[4/3] object-contain rounded-2xl bg-white/60"
         draggable={false}

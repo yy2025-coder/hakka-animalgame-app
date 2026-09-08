@@ -9,13 +9,10 @@ export default function ListenPage({ onBack }) {
   const { speakAnimal, isPlaying, error } = useTTS()
   const { voice } = useAccent()
   const [activeId, setActiveId] = useState(null)
-  const [flippedId, setFlippedId] = useState(null)
 
   const handleTap = async (animal) => {
     setActiveId(animal.id)
     await speakAnimal(animal, { lang: voice.languageCode, voice: voice.female, rate: 0.75 })
-    setFlippedId(animal.id)
-    setTimeout(() => setFlippedId((cur) => (cur === animal.id ? null : cur)), 2200)
   }
 
   return (
@@ -29,7 +26,6 @@ export default function ListenPage({ onBack }) {
             key={animal.id}
             animal={animal}
             playing={isPlaying && activeId === animal.id}
-            showCard={flippedId === animal.id}
             onClick={() => handleTap(animal)}
           />
         ))}
